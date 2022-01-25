@@ -1,0 +1,12 @@
+<div>
+<p>
+<a href="https://www.tableau.com/community/iron-viz">Iron Viz</a> is Tableau's ultimate data competition where cash prizes, charity donations and conference places are up for grabs! 
+</p>
+<p>
+This year's global qualifier focuses on "Visualizing the Arts", entrants are to viz about your favorite art form and submit a Tableau viz before the 7th February 2022 deadline. Find out more <a href="https://www.tableau.com/about/blog/2022/1/iron-viz-2022-global-qualifier-visualizing-arts">here.</a>
+</p> 
+<p>
+Below are NUM_OF_VIZZES incredible Iron Viz submissions I've compiled from Twitter. Please give plenty of support to these entrants by clicking the viz and going to their Twitter pages.
+</p>
+</div>
+<section id="gallery">
