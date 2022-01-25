@@ -5,7 +5,7 @@
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]() [![GitHub Issues](https://img.shields.io/github/issues/wjsutton/ironviz_gallery_2022.svg)](https://github.com/wjsutton/ironviz_gallery_2022/issues) [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/wjsutton/ironviz_gallery_2022.svg)](https://github.com/wjsutton/ironviz_gallery_2022/pulls) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-A Gallery of 2022 Iron Viz submissions found on Twitter.
+Code to create a html webpage of Iron Viz 2022 submission from Twitter.
  
 [Twitter][Twitter] :speech_balloon:&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[LinkedIn][LinkedIn] :necktie:&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[GitHub :octocat:][GitHub]&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[Website][Website] :link:
 
@@ -28,9 +28,9 @@ This project can be divided up into 3 main steps
 
 1. Pulling #ironviz and #ironviz2022 tweets from Twitter
 2. Identifying Tableau Public URLs and obtaining dashboard images
-3. Building HTML code to displaying images in a grid
+3. Building HTML code to display images in a grid
 
-:star: All the steps have been gather into one script here :star:
+:star: All the steps have been gathered into one script here :star:
 - [R_build_ironviz_gallery.R](R_build_ironviz_gallery.R)
 
 
@@ -56,9 +56,9 @@ The function `function_get_and_save_tweets.R` builds from the rtweet function `r
 
 `function_get_and_save_tweets.R` takes the arguments:
 
-- "text" the term you want to search Twitter for
-- "n" the number of tweets (statuses) you want to return
-- "path" the file path where to store the tweets
+- "text" is the term you want to search Twitter for
+- "n" is the number of tweets (statuses) you want to return
+- "path" is the file path where to store the tweets
 
 Please note there is are limitations on `rtweet::search_tweets()` and hence `function_get_and_save_tweets.R`:
 
@@ -103,13 +103,13 @@ From these URLs, we'll extract a screenshot of the dashboard to add to the galle
 
 Issues 1 & 2 were identified midway through the project while I was updating the page every few hours with new submissions. The issues were spotted manually and workarounds were implemented to fix the page quickly rather than provide a coded solution that would work for a future dataset.
 
-1. Tweets that were inspired by posts were identified manually and filter out from the dataset, e.g.
+1. Tweets that were inspired by posts were identified manually and filtered out from the dataset, e.g.
 ```
 ironviz <- ironviz %>% filter(status_id != '1286048757071646720')
 ```
 A less manual solution may be achieved by work along the lines of identifying tweets containing the word 'submission' and compared against 'inspired' but there's no guarantee of this given the nature of free-text datasets.
 
-2. URLs that are profiles rather than vizs won't be recognised and end up in a separate data frame used for checking. Again manually this means checking the profile and find the correct viz (matching it to the tweet) and replacing the URL in the dataset, e.g.
+2. URLs that are profiles rather than vizs won't be recognised and end up in a separate data frame used for checking. Again manually this means checking the profile and finding the correct viz (matching it to the tweet) and replacing the URL in the dataset, e.g.
 
 ```
 df$urls_expanded_url <- gsub('^https://public.tableau.com/profile/aashique.s#!/$'
@@ -184,7 +184,7 @@ To end we write the csv file locally.
 
 For this final section `source("R/update_html_files.R")` updates the html file: `ironviz.html`
 
-`ironviz.html` is a static HTML file which can be regenerated using an R script, `ironviz_build_html.R`. This allows any new images to be added to the gallery page automatically and it refreshes the order of the images so each entry has a fair chance of being top of the page for a while.
+`ironviz.html` is a static HTML file that can be regenerated using an R script, `ironviz_build_html.R`. This allows any new images to be added to the gallery page automatically and it refreshes the order of the images so each entry has a fair chance of being top of the page for a while.
 
 `ironviz_build_html.R` takes our .csv file of submission tweets from Step 2, randomises their order and pastes them into a HTML file. As most of the HTML doesn’t change except the images and the number of images quoted I’ve pre-made these files and save them as .txt files under the folder `html`.
 Reading/writing HTML files in R can be accomplished using the readLines & writeLines functions.
